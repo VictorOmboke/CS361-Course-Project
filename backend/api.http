@@ -1,0 +1,62 @@
+@baseUrl = http://localhost:{{$dotenv EXPRESS_PORT}}/api/auth
+
+@userId = 3
+
+### 1. Register a New User
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johnd@example.com",
+    "password": "SecurePassword123!"
+}
+
+### 2. Log in to get access token and set the refresh token
+# @name loginRequest
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "johnd@example.com",
+    "providedPassword": "SecurePassword123!"
+}
+
+### 3. Capture access token from login response
+@accessToken = {{loginRequest.response.body.accessToken}}
+
+### 4. Get user profile
+GET {{baseUrl}}/profile/{{userId}}
+Authorization: bearer {{accessToken}}
+
+### 5. Test refresh token endpoint
+# @name refreshTokenRequest
+POST {{baseUrl}}/refresh-token
+
+### 6. Store new access token
+@newAccessToken = {{refreshTokenRequest.response.body.accessToken}}
+
+### 7. Update a user's names
+PATCH {{baseUrl}}/profile/{{userId}}
+Authorization: bearer {{newAccessToken}}
+Content-Type: application/json
+
+{
+    "newFirstName": "James",
+    "newLastName": "Smith"
+}
+
+### 8. Update a user's password
+PATCH {{baseUrl}}/password/{{userId}}
+Authorization: bearer {{newAccessToken}}
+Content-Type: application/json
+
+{
+    "password": "SecurePassword123!",
+    "newPassword": "NewSuperSecurePassword123!"
+}
+
+### 9. Delete a user
+DELETE {{baseUrl}}/user/{{userId}}
+Authorization: bearer {{newAccessToken}}
