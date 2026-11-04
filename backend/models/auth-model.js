@@ -1,4 +1,4 @@
-import pool from "../database/db-connect";
+import pool from "../database/db-connect.js";
 
 const AuthModel = {
   // Register user
@@ -32,11 +32,37 @@ const AuthModel = {
     return rows[0];
   },
 
+  // Find user by email
+  async findUserByEmail(email) {
+    const query = `
+        SELECT user_id, password
+        FROM Users
+        WHERE email = ?;
+    `;
+    const [rows] = await pool.execute(query, [email]);
+
+    // Return the user data
+    return rows[0];
+  },
+
+  // Get a user's password (SENSITIVE DATA - FOR PASSWORD CHANGES ONLY)
+  async getUserPassword(user_id) {
+    const query = `
+        SELECT password
+        FROM Users
+        WHERE user_id = ?;
+    `;
+    const [rows] = await pool.execute(query, [user_id]);
+
+    // Return password
+    return rows[0].password;
+  },
+
   // Edit user names
-  async editUserNames(user_id, first_name, last_name) {
+  async updateUserNames(user_id, first_name, last_name) {
     const query = `
         UPDATE Users
-        SET first_name = ? AND last_name = ?
+        SET first_name = ?, last_name = ?
         WHERE user_id = ?;
     `;
     const [result] = await pool.execute(query, [
@@ -71,7 +97,7 @@ const AuthModel = {
     const [result] = await pool.execute(query, [user_id]);
 
     // Return number of affected rows
-    result.affectedRows;
+    return result.affectedRows;
   },
 };
 
