@@ -58,12 +58,10 @@ CREATE TABLE Shows (
 CREATE TABLE Watchlist_items (
     watchlist_item_id INT AUTO_INCREMENT,
     user_id INT NOT NULL,
-    movie_id INT NULL,
-    show_id INT NULL,
+    media_item_id INT NOT NULL,
     is_watched BOOLEAN DEFAULT FALSE,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (watchlist_item_id),
     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
-    FOREIGN KEY (movie_id) REFERENCES Movies (movie_id) ON DELETE CASCADE,
-    FOREIGN KEY (show_id) REFERENCES Shows (show_id) ON DELETE CASCADE
+    FOREIGN KEY (media_item_id) REFERENCES Media_items (media_item_id) ON DELETE CASCADE
 );

@@ -55,9 +55,9 @@ VALUES
 
 -- Sample Data For Watchlist_items
 INSERT INTO
-    Watchlist_items (user_id, movie_id, show_id, is_watched)
+    Watchlist_items (user_id, media_item_id, is_watched)
 VALUES
-    (1, 1, NULL, TRUE),
-    (1, NULL, 1, FALSE),
-    (2, NULL, 1, TRUE),
-    (2, 1, NULL, FALSE);
+    (1, 1, TRUE),
+    (1, 2, FALSE),
+    (2, 2, TRUE),
+    (2, 1, FALSE);
