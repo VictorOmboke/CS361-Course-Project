@@ -1,8 +1,8 @@
-import pool from "../database/db-connect";
+import pool from "../database/db-connect.js";
 
 const WatchlistModel = {
   // Find media item by tmdb ID
-  async findByTmdbId(tmdb_id) {
+  async findMediaItemByTmdbId(tmdb_id) {
     const query = `
             SELECT media_item_id 
             FROM Media_items
@@ -10,8 +10,8 @@ const WatchlistModel = {
         `;
     const [rows] = await pool.execute(query, [tmdb_id]);
 
-    // Return media item id
-    return rows[0];
+    // Return media item id if it exists, return null otherwise
+    return rows[0] ? rows[0].media_item_id : null;
   },
 
   // Add media item
@@ -44,16 +44,22 @@ const WatchlistModel = {
   },
 
   // Add movie
-  async addMovie(media_item_id, director, runtime_in_minutes) {
+  async addMovie(media_item_id, director, runtime_minutes) {
+    console.log("Inside Model addMovie with:", {
+      media_item_id,
+      director,
+      runtime_minutes,
+    });
+
     const query = `
-        INSERT INTO Movies (media_item_id, director, runtime_in_minutes)
+        INSERT INTO Movies (media_item_id, director, runtime_minutes)
         VALUES
         (?, ?, ?);
     `;
     const [result] = await pool.execute(query, [
       media_item_id,
       director,
-      runtime_in_minutes,
+      runtime_minutes,
     ]);
 
     // Return movie ID
@@ -78,17 +84,13 @@ const WatchlistModel = {
   },
 
   // Add to watchlist
-  async addWatchlistItem(user_id, media_item_id, is_watched) {
+  async addWatchlistItem(user_id, media_item_id) {
     const query = `
-        INSERT INTO Watchlist_items (user_id, media_item_id, is_watched)
+        INSERT INTO Watchlist_items (user_id, media_item_id)
         VALUES
-        (?, ?, ?);
+        (?, ?);
     `;
-    const [result] = await pool.execute(query, [
-      user_id,
-      media_item_id,
-      is_watched,
-    ]);
+    const [result] = await pool.execute(query, [user_id, media_item_id]);
 
     // Return watchlist item ID
     return result.insertId;
@@ -180,7 +182,7 @@ const WatchlistModel = {
     return result.affectedRows;
   },
 
-  // Delete a media item from a user's watchlist
+  // Delete a watchlist item from a user's watchlist
   async deleteWatchlistItem(watchlist_item_id) {
     const query = `
         DELETE FROM Watchlist_items
