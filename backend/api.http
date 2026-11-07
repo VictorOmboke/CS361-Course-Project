@@ -1,9 +1,10 @@
-@baseUrl = http://localhost:{{$dotenv EXPRESS_PORT}}/api/auth
+###### User Auth test routes
+@authUrl = http://localhost:{{$dotenv EXPRESS_PORT}}/api/auth
 
-@userId = 3
+@userId = 9
 
 ### 1. Register a New User
-POST {{baseUrl}}/register
+POST {{authUrl}}/register
 Content-Type: application/json
 
 {
@@ -15,7 +16,7 @@ Content-Type: application/json
 
 ### 2. Log in to get access token and set the refresh token
 # @name loginRequest
-POST {{baseUrl}}/login
+POST {{authUrl}}/login
 Content-Type: application/json
 
 {
@@ -27,18 +28,18 @@ Content-Type: application/json
 @accessToken = {{loginRequest.response.body.accessToken}}
 
 ### 4. Get user profile
-GET {{baseUrl}}/profile/{{userId}}
+GET {{authUrl}}/profile/{{userId}}
 Authorization: bearer {{accessToken}}
 
 ### 5. Test refresh token endpoint
 # @name refreshTokenRequest
-POST {{baseUrl}}/refresh-token
+POST {{authUrl}}/refresh-token
 
 ### 6. Store new access token
 @newAccessToken = {{refreshTokenRequest.response.body.accessToken}}
 
 ### 7. Update a user's names
-PATCH {{baseUrl}}/profile/{{userId}}
+PATCH {{authUrl}}/profile/{{userId}}
 Authorization: bearer {{newAccessToken}}
 Content-Type: application/json
 
@@ -48,7 +49,7 @@ Content-Type: application/json
 }
 
 ### 8. Update a user's password
-PATCH {{baseUrl}}/password/{{userId}}
+PATCH {{authUrl}}/password/{{userId}}
 Authorization: bearer {{newAccessToken}}
 Content-Type: application/json
 
@@ -58,5 +59,74 @@ Content-Type: application/json
 }
 
 ### 9. Delete a user
-DELETE {{baseUrl}}/user/{{userId}}
+DELETE {{authUrl}}/user/{{userId}}
 Authorization: bearer {{newAccessToken}}
+
+###### Watchlist route tests
+@watchlistUrl = http://localhost:{{$dotenv EXPRESS_PORT}}/api/watchlist
+
+### 1. Add a movie to user watchlist
+POST {{watchlistUrl}}/
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "tmdb_id": 157336,
+    "type": "movie"
+}
+
+###2. Add show to user watchlist
+POST {{watchlistUrl}}/
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "tmdb_id": 1396,
+    "type": "show"
+}
+
+### 3. Add movie already in watchlist
+POST {{watchlistUrl}}/
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "tmdb_id": 157336,
+    "type": "movie"
+}
+
+### 4. Add Show already in media items but not watchlist
+POST {{watchlistUrl}}/
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "tmdb_id": 1399,
+    "type": "show"
+}
+
+### 5. Get watchlist items for a user
+GET {{watchlistUrl}}/
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+### 6. Get watchlist item details
+GET {{watchlistUrl}}/media_item/10
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+### 7. Update a watchlist items watch state
+PATCH {{watchlistUrl}}/item/12
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "newWatchState": true
+}
+
+### 7. Delete watchlist item
+DELETE {{watchlistUrl}}/item/14
+Authorization: bearer {{accessToken}}
+Content-Type: application/json
+
+
