@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth-routes.js";
+import watchlistRoutes from "./routes/watchlist-routes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 // Create express application
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/watchlist", watchlistRoutes);
 
 // Error handler middleware
 app.use(errorHandler);
