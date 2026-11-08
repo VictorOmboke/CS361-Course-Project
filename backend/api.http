@@ -1,7 +1,7 @@
 ###### User Auth test routes
 @authUrl = http://localhost:{{$dotenv EXPRESS_PORT}}/api/auth
 
-@userId = 9
+@userId = 10
 
 ### 1. Register a New User
 POST {{authUrl}}/register
@@ -129,4 +129,9 @@ DELETE {{watchlistUrl}}/item/14
 Authorization: bearer {{accessToken}}
 Content-Type: application/json
 
+###### Search Routes
+@searchUrl= http://localhost:{{$dotenv EXPRESS_PORT}}/api/search
 
+### 1. Search for a movie title
+GET {{searchUrl}}/?query=Shameless
+Authorization: bearer {{accessToken}}
