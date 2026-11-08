@@ -1,4 +1,4 @@
-import AppError from "../middleware/errorHandler.js";
+import AppError from "../utils/app-error.js";
 import WatchlistModel from "../models/watchlist-model.js";
 
 const WatchlistController = {

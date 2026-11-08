@@ -1,4 +1,4 @@
-import AppError from "../middleware/errorHandler.js";
+import AppError from '../utils/app-error.js';
 import AuthModel from "../models/auth-model.js";
 import * as argon from "argon2";
 import jwt from "jsonwebtoken";
