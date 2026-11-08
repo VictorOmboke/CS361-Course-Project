@@ -1,18 +1,15 @@
-//  Application error handling class
-class AppError extends Error {
-  constructor(message, statusCode = 500) {
-    super(message);
-    this.statusCode = statusCode;
+// Express error handling middleware
+const errorHandler = (err, req, res, next) => {
+  // Default to 500 if status code isn't specified
+  const statusCode = err.statusCode || 500;
+  const status = err.status || "error";
 
-    // Differentiate between user errors and dev errors
-    this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
+  console.error("Error caught by global handler:", err);
 
-    // Only focus on operational errors, not programmer errors
-    this.isOperational = true;
+  res.status(statusCode).json({
+    status: status,
+    message: err.message || "Internal Server Error",
+  });
+};
 
-    // Capture stack trace, exclude constructor call
-    Error.captureStackTrace(this, this.constructor);
-  }
-}
-
-export default AppError;
+export default errorHandler;
