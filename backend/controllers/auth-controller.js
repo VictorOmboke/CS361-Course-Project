@@ -25,13 +25,11 @@ const AuthController = {
     const accessToken = generateAccessToken(newUserId);
 
     // Send success message
-    res
-      .status(201)
-      .json({
-        message: "User registered successfully",
-        userID: newUserId,
-        accessToken: accessToken,
-      });
+    res.status(201).json({
+      message: "User registered successfully",
+      userID: newUserId,
+      accessToken: accessToken,
+    });
   },
 
   // Find user by their ID
@@ -174,11 +172,7 @@ const AuthController = {
       const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
 
       // Create new access token
-      const newAccessToken = jwt.sign(
-        { sub: decoded.sub },
-        process.env.JWT_SECRET,
-        { expiresIn: "15m" }
-      );
+      const newAccessToken = generateAccessToken(decoded.user_id);
 
       // Return new access token
       return res.json({ accessToken: newAccessToken });

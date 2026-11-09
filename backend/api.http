@@ -133,5 +133,5 @@ Content-Type: application/json
 @searchUrl= http://localhost:{{$dotenv EXPRESS_PORT}}/api/search
 
 ### 1. Search for a movie title
-GET {{searchUrl}}/?query=Shameless
+GET {{searchUrl}}/?query=Inception
 Authorization: bearer {{accessToken}}
