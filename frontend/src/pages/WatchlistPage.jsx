@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
-import { Menu, Plus, X, Trash } from "lucide-react";
+import { Plus, X, Trash } from "lucide-react";
 
 export default function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
