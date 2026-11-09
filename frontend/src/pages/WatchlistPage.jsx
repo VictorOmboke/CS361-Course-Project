@@ -9,7 +9,6 @@ export default function Watchlist() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState("oldest");
   const [deleteMsg, setDeleteMsg] = useState("");
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   // Router hook to navigate users programmatically
@@ -45,10 +44,8 @@ export default function Watchlist() {
 
         // Store response
         setWatchlist(data.watchlist);
-        setLoading(false);
       } catch (err) {
         setError(err.message);
-        setLoading(false);
       }
     };
     getData();
