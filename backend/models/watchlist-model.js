@@ -101,6 +101,7 @@ const WatchlistModel = {
     const query = `
         SELECT 
             wi.watchlist_item_id, 
+            mi.media_item_id,
             mi.tmdb_id, 
             mi.poster_path, 
             mi.title, 
