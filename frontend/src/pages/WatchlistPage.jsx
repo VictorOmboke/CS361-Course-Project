@@ -22,11 +22,11 @@ export default function Watchlist() {
         const accessToken = localStorage.getItem("token");
 
         // Handle user access
-        //if (!accessToken) {
-        // Send user's back to login if they don't have access.
-        //navigate("/");
-        //return; // Exit function
-        //}
+        if (!accessToken) {
+          // Send user's back to login if they don't have access.
+          navigate("/");
+          return; // Exit function
+        }
 
         // Make call to backend api
         const response = await fetch("/api/watchlist/", {
@@ -57,7 +57,7 @@ export default function Watchlist() {
       const accessToken = localStorage.getItem("token");
 
       // Make call to backend api
-      const response = await fetch(`/api/watchlist/${mediaItemId}`, {
+      const response = await fetch(`/api/watchlist/media_item${mediaItemId}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${accessToken}` },
       });
