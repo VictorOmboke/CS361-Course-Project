@@ -1,4 +1,4 @@
-import AppError from '../utils/app-error.js';
+import AppError from "../utils/app-error.js";
 import AuthModel from "../models/auth-model.js";
 import * as argon from "argon2";
 import jwt from "jsonwebtoken";
@@ -21,10 +21,17 @@ const AuthController = {
       hashedPassword
     );
 
+    // Generate JWT access token
+    const accessToken = generateAccessToken(newUserId);
+
     // Send success message
     res
       .status(201)
-      .json({ message: "User registered successfully", userID: newUserId });
+      .json({
+        message: "User registered successfully",
+        userID: newUserId,
+        accessToken: accessToken,
+      });
   },
 
   // Find user by their ID
