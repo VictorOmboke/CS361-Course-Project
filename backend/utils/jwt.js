@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 // Short term access
 export function generateAccessToken(userId) {
   return jwt.sign({ user_id: userId }, process.env.JWT_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "7d",
   });
 }
 

@@ -123,7 +123,7 @@ const AuthController = {
   // Log a user into the app
   async userLogIn(req, res, next) {
     // Get user information
-    const { email, providedPassword } = req.body;
+    const { email, password: providedPassword } = req.body;
     const user = await AuthModel.findUserByEmail(email);
 
     // Check if user exists
