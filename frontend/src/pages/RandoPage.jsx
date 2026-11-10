@@ -49,7 +49,6 @@ export default function Rando() {
 
       // Select random title from watchlist
       const chosenItem = watchlist[randomIndex];
-      setSelectedTitle(chosenItem);
 
       // Get user credentials
       const accessToken = localStorage.getItem("token");
@@ -72,7 +71,7 @@ export default function Rando() {
       }
 
       // Store data
-      setTitleDetails(data);
+      setTitleDetails(data.watchlist_item_details);
     } catch (err) {
       setError(err.message);
     }
@@ -102,30 +101,36 @@ export default function Rando() {
 
         {titleDetails && (
           <div className="rando-result-card">
-            {titleDetails.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500${titleDetails.poster_path}`}
-                alt={titleDetails.title}
-              />
-            )}
-            <span className="rando-result-title">{titleDetails.title}</span>
+            <div className="rando-result-img">
+              {titleDetails.poster_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${titleDetails.poster_path}`}
+                  alt={titleDetails.title}
+                />
+              )}
+            </div>
+            <div className="rando-result-details">
+              <div className="rando-result-title-year">
+                <span className="rando-result-title">{titleDetails.title}</span>
 
-            <span className="rando-result-year">
-              {titleDetails.release_date?.slice(0, 4)}
-            </span>
+                <span className="rando-result-year">
+                  {` (${titleDetails.release_date?.slice(0, 4)})`}
+                </span>
+              </div>
 
-            <p className="rando-result-creator">
-              {titleDetails.director || titleDetails.creator}
-            </p>
+              <p className="rando-result-creator">
+                {titleDetails.director || titleDetails.creator}
+              </p>
 
-            <p className="rando-result-runtime">
-              {titleDetails.runtime_minutes
-                ? `${titleDetails.runtime_minutes}m`
-                : `${titleDetails.num_of_seasons} Seasons`}
-            </p>
+              <p className="rando-result-runtime">
+                {titleDetails.runtime_minutes
+                  ? `${titleDetails.runtime_minutes}m`
+                  : `${titleDetails.num_of_seasons} Seasons`}
+              </p>
 
-            <p>Overview</p>
-            <p className="rando-result-overview">{titleDetails.overview}</p>
+              <p className="rando-result-header">Overview</p>
+              <p className="rando-result-overview">{titleDetails.overview}</p>
+            </div>
           </div>
         )}
       </div>

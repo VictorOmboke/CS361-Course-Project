@@ -16,16 +16,19 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="brand">
-        <h2>Screeni</h2>
+        <h2>SCREENi</h2>
       </div>
 
       <div className="nav-links">
         <Link to={"/watchlist"}>Watchlist</Link>
         <Link to={"/search"}>Search</Link>
         <Link to={"/rando"}>Rando</Link>
-        <Link to={"/profile"}>Profile</Link>
+        {/*<Link to={"/profile"}>Profile</Link>*/}
         <button onClick={handleLogout} className="logout-btn">
-          <LogOut />
+          <LogOut 
+            color="#fff"
+            strokeWidth={3}
+          />
         </button>
       </div>
     </nav>

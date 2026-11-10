@@ -1,0 +1,757 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #202020;
+}
+
+/* ------------LOGIN AND REGISTER PAGE STYLING------------ */
+.login-container,
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(#000, #69449d);
+  width: 100vw;
+  height: 100vh;
+  padding: 30px;
+}
+
+.login-container h1,
+.register-container h1 {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 8rem;
+  font-weight: 100;
+  color: #fff;
+}
+
+.login-container h3,
+.register-container h3 {
+  font-family: "Inter";
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 200px;
+}
+
+.login-form-container,
+.register-form-container {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 400px;
+}
+
+.login-form-container h3,
+.register-form-container h3 {
+  margin-bottom: 25px;
+  font-size: 2.5rem;
+}
+
+.login-form-container button,
+.register-form-container button {
+  display: flex;
+  justify-self: center;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  border-style: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.login-form-container button:active,
+.register-form-container button:active {
+  transform: scale(0.95);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  border-style: none;
+  border-radius: 4px;
+  padding: 12px 10px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.register,
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  margin-top: 30px;
+  gap: 5px;
+}
+
+.register p,
+.login p {
+  color: #fff;
+}
+
+.register button,
+.login button {
+  width: 80px;
+  padding: 5px 10px;
+  font-weight: 600;
+  border-style: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.register button:active,
+.login button:active {
+  transform: scale(0.95);
+}
+
+.info-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+}
+
+.info-container .how-to {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 25px;
+}
+
+.info-icon {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.info-container:hover .how-to {
+  display: block;
+}
+
+.how-to {
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  height: 480px;
+  width: 200px;
+}
+
+.how-to h5 {
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.how-to li {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.keyword {
+  color: #69449d;
+}
+
+/* ------------WATCHLIST PAGE STYLING------------ */
+
+.watchlist-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #202020;
+  padding: 50px 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.watchlist-container h1 {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 80px;
+}
+
+.brand h2 {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 35px;
+  color: #fff;
+  font-weight: 100;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav-links a:hover {
+  color: #69449d;
+}
+
+.nav-links button {
+  border-style: none;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background-color: #ff5555;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.nav-links button:active {
+  transform: scale(0.95);
+}
+
+.action-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin-bottom: 15px;
+}
+
+.action-btns button {
+  border-style: none;
+  border-radius: 4px;
+  background-color: #69449d;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.action-btns button:active {
+  transform: scale(0.95);
+}
+
+.sort-btn {
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-btn {
+  padding: 5px 10px;
+}
+
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  width: 90%;
+  max-width: 1200px;
+  height: 75vh;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 30px;
+  overflow-y: scroll;
+  scrollbar-color: #69449d rgba(255, 255, 255, 0.07);
+  scrollbar-width: thin;
+}
+
+.title-card {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.title-card:hover {
+  transform: translateY(-4px);
+}
+
+.title-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.title-card p {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title-card span {
+  color: #fff;
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+
+.delete-btn {
+  margin-top: auto;
+  border-style: none;
+  border-radius: 4px;
+  padding: 1px;
+  background-color: #ff5555;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+.modal-overlay,
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 20px;
+  background-color: rgba(48, 48, 48, 1);
+  color: #fff;
+  width: 80%;
+  max-width: 1200px;
+  height: 520px;
+  border-radius: 6px;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-content img {
+  width: auto;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-style: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #69449d;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.modal-close-btn:active {
+  transform: scale(0.95);
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 35px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal-title-year {
+  font-size: 2.5rem;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.modal-year {
+  font-weight: 200;
+}
+
+.modal-runtime,
+.modal-creator,
+.modal-genre {
+  font-size: 1.8rem;
+  font-weight: 200;
+}
+
+.modal-content h3 {
+  margin-top: 60px;
+  font-size: 1.5rem;
+}
+
+.modal-overview {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.delete-confirmation-modal {
+  height: 250px;
+  width: 60%;
+  max-width: 500px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.delete-modal-msg {
+  font-size: 1.3rem;
+}
+
+.delete-modal-btns {
+  display: flex;
+  gap: 100px;
+  margin-top: 30px;
+}
+
+.delete-modal-cancel-btn,
+.delete-modal-btn {
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-style: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.delete-modal-cancel-btn:active,
+.delete-modal-btn:active {
+  transform: scale(0.95);
+}
+
+.delete-modal-cancel-btn {
+  background-color: rgba(71, 64, 212, 1);
+}
+
+.delete-modal-btn {
+  background-color: #ff5555;
+}
+
+/* ------------SEARCH PAGE STYLING------------ */
+
+.search-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #202020;
+  padding: 50px 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container h1 {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.search-form {
+  width: 60%;
+  max-width: 900px;
+}
+
+.search-form form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.search-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border-style: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-form button {
+  border-style: none;
+  border-radius: 6px;
+  padding: 7px;
+  background-color: #69449d;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.search-form button:active {
+  transform: scale(0.95);
+}
+
+.search-results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 90%;
+  max-width: 1200px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 30px;
+  overflow-y: scroll;
+  scrollbar-color: #69449d rgba(255, 255, 255, 0.07);
+  scrollbar-width: thin;
+  position: relative;
+}
+
+.empty-results-msg {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.result-card {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  position: relative;
+}
+
+.result-card img {
+  width: auto;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.result-details {
+  padding: 20px;
+}
+
+.result-title,
+.result-year {
+  font-size: 30px;
+}
+
+.result-title {
+  font-weight: 500;
+}
+
+.result-year {
+  font-weight: 200;
+}
+
+.result-header {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.result-overview {
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.result-add-btn {
+  border-style: none;
+  border-radius: 4px;
+  background-color: #69449d;
+  color: #fff;
+  padding: 3px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.result-add-btn:active {
+  transform: scale(0.95);
+}
+
+/* ------------RANDO PAGE STYLING------------ */
+
+.rando-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #202020;
+  padding: 50px 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rando-container h1 {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.rando-btn {
+  width: 300px;
+  padding: 20px;
+  border-style: none;
+  border-radius: 4px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #69449d;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  margin-bottom: 80px;
+}
+
+.rando-btn:active {
+  transform: scale(0.95);
+}
+
+.rando-result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  width: 90%;
+  max-width: 1200px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 30px;
+  position: relative;
+}
+
+.rando-empty-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.rando-result-card {
+  display: flex;
+  gap: 10px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+.rando-result-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.rando-result-img img {
+  width: auto;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.rando-result-title,
+.rando-result-year {
+  font-size: 2rem;
+}
+
+.rando-result-year {
+  font-weight: 200;
+}
+
+.rando-result-creator {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+.rando-result-runtime {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin-bottom: 30px;
+}
+
+.rando-result-header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.rando-result-overview {
+  font-size: 1.2rem;
+  font-weight: 200;
+}

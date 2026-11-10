@@ -50,65 +50,72 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Screeni</h1>
+      <h1>SCREENi</h1>
       <h3>The App Created To Tackle Your Backlog</h3>
 
       {/* Render error message if one exists */}
       {error && <p className="error-banner">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+      <div className="login-form-container">
+        <h3>Login</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Log In</button>
-      </form>
-
-      <p>Don't have an account?</p>
-      <button onClick={handleNewUser}>Sign Up</button>
-
-      <div className="info-icon">
-        <Info />
+          <button type="submit">Log In</button>
+        </form>
       </div>
 
-      <div className="how-to">
-        <h5>How to Use</h5>
-        <ul>
-          <li>
-            Search up any movie or show on the{" "}
-            <span className="keyword">Search</span> page.
-          </li>
-          <li>
-            Add them to your watchlist using the{" "}
-            <span className="keyword">+</span> button.
-          </li>
-          <li>
-            View movie and show details by clicking them on your{" "}
-            <span className="keyword">Watchlist</span>.
-          </li>
-          <li>Delete movies and shows from your watchlist.</li>
-          <li>
-            Not sure what to watch? Check out the{" "}
-            <span className="keyword">Rando</span> feature which will pick a
-            movie or show from your watchlist for you.
-          </li>
-        </ul>
+      <div className="register">
+        <p>Don't have an account?</p>
+        <button onClick={handleNewUser}>Sign Up</button>
+      </div>
+
+      <div className="info-container">
+        <div className="info-icon">
+          <Info color="#ffffff" size={35} />
+        </div>
+
+        <div className="how-to">
+          <h5>How to Use</h5>
+          <ul>
+            <li>
+              Search up any movie or show on the{" "}
+              <span className="keyword">Search</span> page.
+            </li>
+            <li>
+              Add them to your watchlist using the{" "}
+              <span className="keyword">+</span> button.
+            </li>
+            <li>
+              View movie and show details by clicking them on your{" "}
+              <span className="keyword">Watchlist</span>.
+            </li>
+            <li>Delete movies and shows from your watchlist.</li>
+            <li>
+              Not sure what to watch? Check out the{" "}
+              <span className="keyword">Rando</span> feature which will pick a
+              movie or show from your watchlist for you.
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

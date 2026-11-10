@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import { Plus, Search } from "lucide-react";
 
@@ -99,24 +98,30 @@ export default function SearchPage() {
         ) : (
           results.map((item) => (
             <div key={item.id} className="result-card">
-              {item.poster_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                  alt={item.name}
-                />
-              )}
-              <p className="result-title">{item.name || item.title}</p>
-              <span className="result-year">{`(${(
-                item.first_air_date || item.release_date
-              )?.slice(0, 4)})`}</span>
-              <p>Overview</p>
-              <p className="result-overview">{item.overview}</p>
-              <button
-                className="result-add-btn"
-                onClick={() => handleAddToWatchlist(item.id, item.media_type)}
-              >
-                <Plus />
-              </button>
+              <div className="result-img-container">
+                {item.poster_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt={item.name}
+                  />
+                )}
+              </div>
+              <div className="result-details">
+                <span className="result-title">{item.name || item.title}</span>
+                <span className="result-year">{` (${(
+                  item.first_air_date || item.release_date
+                )?.slice(0, 4)})`}</span>
+                <p className="result-header">Overview</p>
+                <p className="result-overview">{item.overview}</p>
+                <button
+                  className="result-add-btn"
+                  onClick={() => handleAddToWatchlist(item.id, item.media_type)}
+                >
+                  <Plus 
+                    strokeWidth={3}
+                  />
+                </button>
+              </div>
             </div>
           ))
         )}
