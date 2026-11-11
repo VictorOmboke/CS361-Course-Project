@@ -46,29 +46,29 @@ cd YOUR_REPOSITORY_NAME
 
 ### 2. Database Setup
 
-## 2.1 Log into your local MySQL instance and create your database
+#### 2.1 Log into your local MySQL instance and create your database
 
 ```sql
 CREATE DATABASE watchlist_db;
 ```
 
-## 2.2 Paste in the SQL code found in schema.sql into your database instance to create all the tables and DDL.
+#### 2.2 Paste in the SQL code found in schema.sql into your database instance to create all the tables and DDL.
 
 ### 3. Backend Setup
 
-## 3.1 Navigate to your backend directory
+#### 3.1 Navigate to your backend directory
 
 ```bash
 cd backend
 ```
 
-## 3.2 Install dependencies
+#### 3.2 Install dependencies
 
 ```bash
 npm install
 ```
 
-## 3.3 Create a .env file in the root of your backend directory and configure your environment variables. MAKE SURE TO PUT YOUR .env FILE IN YOUR .gitignore file
+#### 3.3 Create a .env file in the root of your backend directory and configure your environment variables. MAKE SURE TO PUT YOUR .env FILE IN YOUR .gitignore file
 
 ```
 PORT=5000
@@ -81,7 +81,7 @@ JWT_REFRESH_SECRET=your_super_secret_refresh_key
 TMDB_API_KEY=your_tmdb_api_key
 ```
 
-## 3.4 Start the backend server
+#### 3.4 Start the backend server
 
 ```bash
 npm run dev
@@ -89,22 +89,22 @@ npm run dev
 
 ### 4. Frontend Setup
 
-## 4.1 Open a new terminal tab and navigate to your frontend directory
+#### 4.1 Open a new terminal tab and navigate to your frontend directory
 
 ```bash
 cd frontend
 ```
 
-## 4.2 Install dependencies
+#### 4.2 Install dependencies
 
 ```bash
 npm install
 ```
 
-## 4.3 Start the Vite development server
+#### 4.3 Start the Vite development server
 
 ```bash
 npm run dev
 ```
 
-## 4.4 Open your browser and navigate to http://localhost:5173 (or the local port provided by Vite)
+#### 4.4 Open your browser and navigate to http://localhost:5173 (or the local port provided by Vite)
